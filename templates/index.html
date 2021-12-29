@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Boggle</title>
+</head>
+<body>
+
+  {% block content%}
+
+  <div class="display-container">
+    <form method="POST" class="add-word">
+      <input name="word" class="word" placeholder="enter word" autofocus>
+      <button>Enter</button>
+    </form>
+
+    <p>Total Games Played: {{ totalGames }}</p>
+
+    <div class="score-container">
+      <p class="high-score">High Score:<span class="high-score-display">{{ highScore }}</span></p>
+      <h3 class="counter"></h3>
+    </div>
+    
+
+  </div>
+
+  <ul class="result"></ul>
+
+  <section id="boggle">
+    <h2 class="score">Score:<span class="currentScore"></span></h2>
+    <table class="board">
+      {% for row in gameBoard %}
+      <tr>
+        {% for cell in row %}
+        <td class="letter">{{ cell }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+  </section>
+
+  {% endblock %}
+
+  <script src="https://unpkg.com/jquery"></script>
+  <script src="https://unpkg.com/axios/dist/axios.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
+
